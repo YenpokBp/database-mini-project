@@ -7,7 +7,7 @@ CREATE TABLE `course_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_category` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
 
 -- 2. Tabel users (Parent table untuk relasi instruktur/pemilik course)
 CREATE TABLE `users` (
@@ -16,7 +16,7 @@ CREATE TABLE `users` (
   `email` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
 
 -- 3. Tabel course (Child table yang punya Foreign Key ke users dan course_category)
 CREATE TABLE `course` (
@@ -32,7 +32,7 @@ CREATE TABLE `course` (
   KEY `category_id` (`category_id`),
   CONSTRAINT `course_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `course_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `course_category` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) 
 
 -- data dummy untuk tabel `course_category`
 INSERT INTO `course_category` (`id`, `nama_category`) VALUES
@@ -316,9 +316,6 @@ GROUP BY category_id;
      efisien daripada menggunakan index.
    - Manfaat index akan lebih terasa ketika jumlah data semakin besar.
 
-7. TRADE-OFF INDEX
-   - Index dapat mempercepat SELECT dan pencarian data.
-   - Namun index membutuhkan storage tambahan dan dapat menambah
-     beban pada INSERT, UPDATE, dan DELETE.
+
 */
 ```
